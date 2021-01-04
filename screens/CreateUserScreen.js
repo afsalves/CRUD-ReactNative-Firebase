@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Button, TextInput, ScrollView, StyleSheet} from 'react-native';
-import firebase from '../database/firebase'
+import firebase from '../database/firebase';
 
 const CreateUserScreen = (props) => {
 
@@ -24,6 +24,7 @@ const CreateUserScreen = (props) => {
                 name: state.name,
                 email: state.email,
                 phone: state.phone
+
             })
             props.navigation.navigate ('UsersList');
         } catch (error){
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc'
-    }
+    },
 })
 
 export default CreateUserScreen

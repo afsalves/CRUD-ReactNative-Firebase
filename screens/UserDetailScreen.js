@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, TextInput, ScrollView, Button, ActivityIndicator, Alert} from 'react-native';
 import firebase from '../database/firebase';
 
+
 const UserDetailScreen = (props) => {
 
     const initialState = {
         id: '',
         name: '', 
         email: '', 
-        phone: ''
+        phone: '',
     }
     const [user, setUser] = useState(initialState);
     const [loading, setLoading] = useState(true);
@@ -97,7 +98,7 @@ const UserDetailScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        padding: 35
+        padding: 35,
     },
     inputGroup: {
         flex: 1,
