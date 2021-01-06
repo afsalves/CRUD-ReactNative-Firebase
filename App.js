@@ -25,6 +25,7 @@ function MyStack() {
         component={UserDetailScreen} 
         options={{title: 'User Detail'}} />
     </Stack.Navigator>
+    
   )
 }
 
