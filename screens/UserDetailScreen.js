@@ -10,6 +10,7 @@ const UserDetailScreen = (props) => {
         name: '', 
         email: '', 
         phone: '',
+        favorited: false
     }
     const [user, setUser] = useState(initialState);
     const [loading, setLoading] = useState(true);
@@ -44,7 +45,8 @@ const UserDetailScreen = (props) => {
         await dbRef.set({ 
             name: user.name,
             email: user.email,
-            phone: user.phone
+            phone: user.phone,
+            favorited: user.favorited
         })
         setUser(initialState)
         props.navigation.navigate('UsersList')

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {View, Button, TextInput, ScrollView, StyleSheet} from 'react-native';
 import firebase from '../database/firebase';
-import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const CreateUserScreen = (props) => {
     
@@ -9,6 +8,7 @@ const CreateUserScreen = (props) => {
         name: '',
         email: '',
         phone: '',
+        favorited: false
     })
 
     const handleChangeText = (name, value) =>{
@@ -24,6 +24,7 @@ const CreateUserScreen = (props) => {
                 name: state.name,
                 email: state.email,
                 phone: state.phone,
+                favorited: state.favorited,
 
             })
             props.navigation.navigate ('UsersList');
@@ -31,15 +32,6 @@ const CreateUserScreen = (props) => {
             console.log(error);
         }
        }
-    }
-
-    const handleFavorites = (name) => {
-        const contactInFavorites = state.find ((state) => state === name)
-        if (contactInFavorites) {
-            setState(state.filter((state) => state !== name))
-        } else {
-            setState([...state, name])
-        }
     }
 
     return (
@@ -58,17 +50,6 @@ const CreateUserScreen = (props) => {
               <TextInput placeholder="User Phone"
                 onChangeText={(value) => handleChangeText('phone', value)}
               />
-          </View>
-          <View>
-            {state.map((state) => {
-                const isFavorited = state.find((state) => state === state.name)
-                return (
-                    <TouchableOpacity onPress={() => handleFavorites(state.name)}>
-                        <Text>{state.name}</Text>
-                        <Icon name={isFavorited ? 'favorite-border' : 'favorite'} size={30} color="#999" />
-                    </TouchableOpacity>
-                 )
-             })}
           </View>
           <View>
               <Button title="Save User" onPress={() => saveNewUser()}/>
@@ -90,6 +71,19 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc'
     },
+
+    favorite:{
+        width:30,
+        height:50,
+        marginTop:20,
+        marginBottom:10,
+        marginRight:15,
+        padding:5,
+      },
+
+      ListItem: {
+          width:30,
+      }
 })
 
 export default CreateUserScreen
