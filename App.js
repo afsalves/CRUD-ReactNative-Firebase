@@ -8,6 +8,7 @@ const Stack = createStackNavigator()
 import UsersList from './screens/UsersList'
 import CreateUserScreen from './screens/CreateUserScreen'
 import UserDetailScreen from './screens/UserDetailScreen'
+import FavoritesList from './screens/FavoritesList'
 
 
 function MyStack() {
@@ -15,15 +16,19 @@ function MyStack() {
     <Stack.Navigator>
       <Stack.Screen name="UsersList" 
         component={UsersList} 
-        options={{title: 'User List'}}  />
+        options={{title: 'Lista de Contatos'}}  />
       <Stack.Screen 
         name="CreateUserScreen" 
         component={CreateUserScreen} 
-        options={{title: 'Create a New User'}} />
+        options={{title: 'Criar Novo Contato'}} />
       <Stack.Screen 
         name="UserDetailScreen" 
         component={UserDetailScreen} 
-        options={{title: 'User Detail'}} />
+        options={{title: 'Detalhe de Contato'}} />
+      <Stack.Screen 
+        name="FavoritesList" 
+        component={FavoritesList} 
+        options={{title: 'Contatos Favoritos'}} />
     </Stack.Navigator>
     
   )

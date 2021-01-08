@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import firebase from '../database/firebase';
 import { ListItem, Avatar } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { TouchableOpacity } from 'react-native';
 
-const UsersList = (props) => {
+const FavoritesList = (props) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -14,15 +14,18 @@ const UsersList = (props) => {
 
             querySnapshot.docs.forEach((doc) => {
                 const {name, email, phone, favorited} = doc.data()
-                users.push({
-                    id: doc.id,
-                    name,
-                    email,
-                    phone,
-                    favorited
-                })
+                if (favorited === true) {
+                    users.push({
+                        id: doc.id,
+                        name,
+                        email,
+                        phone,
+                        favorited
+                    })
+                }
+               
             });
-
+            
             setUsers(users)
         });
     }, []);
@@ -76,11 +79,9 @@ const UsersList = (props) => {
                       </ListItem>
                   )
               })}
-           <Button title="Criar Novo" onPress={() => props.navigation.navigate('CreateUserScreen')} />
-           <Button style={StyleSheet.buttons} title="Favoritos" color= "darkturquoise" onPress={() => props.navigation.navigate('FavoritesList')} />
       </ScrollView>
     )
 }
 
 
-export default UsersList
+export default FavoritesList

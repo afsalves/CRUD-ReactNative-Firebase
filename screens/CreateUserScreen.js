@@ -37,22 +37,22 @@ const CreateUserScreen = (props) => {
     return (
       <ScrollView style= {styles.container}>
           <View style={styles.inputGroup}>
-              <TextInput placeholder="User Name" 
+              <TextInput placeholder="Nome" 
               onChangeText={(value) => handleChangeText('name', value)}
               />
           </View>
           <View style={styles.inputGroup}>
-              <TextInput placeholder="User Email"
+              <TextInput placeholder="Email"
                 onChangeText={(value) => handleChangeText('email', value)}
               />
           </View>
           <View style={styles.inputGroup}>
-              <TextInput placeholder="User Phone"
+              <TextInput placeholder="Telefone"
                 onChangeText={(value) => handleChangeText('phone', value)}
               />
           </View>
           <View>
-              <Button title="Save User" onPress={() => saveNewUser()}/>
+              <Button title="Salvar Contato" onPress={() => saveNewUser()}/>
           </View>
       </ScrollView>
     )
@@ -83,6 +83,12 @@ const styles = StyleSheet.create({
 
       ListItem: {
           width:30,
+      },
+
+      buttons: {
+        marginTop:10,
+        marginBottom:10,
+        padding: 5,
       }
 })
 
